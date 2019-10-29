@@ -1,0 +1,739 @@
+<!-- 
+    https://stackoverflow.com/questions/10473745/compare-strings-javascript-return-of-likely 
+-->
+<html>
+<head></head>
+
+<body>
+    <div><label for="lhsInput">String 1:</label> <input type="text" id="lhsInput" oninput="checkSimilarity()" /></div>
+    <div><label for="rhsInput">String 2:</label> <input type="text" id="rhsInput" oninput="checkSimilarity()" /></div>
+    <div>Match: <span id="output">No Input</span></div>
+    
+    <div>
+        <h1>Warnings to HTML</h1>
+
+        <div id="wth"></div>
+    </div>
+
+    <div>
+        <ul>
+            <li>
+                <span class="fname">Arnaud</span>
+                <span class="lname">Arno</span>
+            </li>
+            <li>
+                <span class="fname">Enora Christy</span>
+                <span class="lname">COSPOLITE</span>
+            </li>
+            <li>
+                <span class="fname">Maxime</span>
+                <span class="lname">BELLEROPHON</span>
+            </li>
+            <li>
+                <span class="fname">Maelynn</span>
+                <span class="lname">GARONDO</span>
+            </li>
+            <li>
+                <span class="fname">Savannah, Maëlle</span>
+                <span class="lname">HUBERVIC</span>
+            </li>
+            <li>
+                <span class="fname">Yunalie</span>
+                <span class="lname">LAQUEMBE</span>
+            </li>
+            <li>
+                <span class="fname">Ryan Homère Joël</span>
+                <span class="lname">PAUL-PARVENU CORDIER</span>
+            </li>
+            <li>
+                <span class="fname">Thais</span>
+                <span class="lname">RENE</span>
+            </li>
+            <li>
+                <span class="fname">Arwen Marie Julie</span>
+                <span class="lname">MUCRET</span>
+            </li>
+            <li>
+                <span class="fname">Jahely</span>
+                <span class="lname">BUISSON</span>
+            </li>
+            <li>
+                <span class="fname">Noham</span>
+                <span class="lname">ROSETTE</span>
+            </li>
+            <li>
+                <span class="fname">Maria</span>
+                <span class="lname">VONIN</span>
+            </li>
+            <li>
+                <span class="fname">Eliot</span>
+                <span class="lname">GRIVALLIER</span>
+            </li>
+            <li>
+                <span class="fname">Nolan</span>
+                <span class="lname">DRAGON</span>
+            </li>
+            <li>
+                <span class="fname">Andres</span>
+                <span class="lname">FLORIMONT</span>
+            </li>
+            <li>
+                <span class="fname">Ethan</span>
+                <span class="lname">TAUPIN</span>
+            </li>
+            <li>
+                <span class="fname">Celyannne</span>
+                <span class="lname">SAULNIER- MAIROT</span>
+            </li>
+            <li>
+                <span class="fname">Thais</span>
+                <span class="lname">SAULNIER- MAIROT</span>
+            </li>
+            <li>
+                <span class="fname">Lyam</span>
+                <span class="lname">ELIAZORD</span>
+            </li>
+            <li>
+                <span class="fname">Clement</span>
+                <span class="lname">COURVOISIER</span>
+            </li>
+            <li>
+                <span class="fname">Léo Nathan Tom</span>
+                <span class="lname">DIRSON PRIVET</span>
+            </li>
+            <li>
+                <span class="fname">Kénael</span>
+                <span class="lname">GARCIA</span>
+            </li>
+            <li>
+                <span class="fname">Mélina</span>
+                <span class="lname">RUSTAL-LIGER</span>
+            </li>
+            <li>
+                <span class="fname">Ethann Assane</span>
+                <span class="lname">AUGUSTIN</span>
+            </li>
+            <li>
+                <span class="fname">Clemence</span>
+                <span class="lname">DUVAL</span>
+            </li>
+            <li>
+                <span class="fname">Alexis</span>
+                <span class="lname">FLORENT</span>
+            </li>
+            <li>
+                <span class="fname">Kleeven</span>
+                <span class="lname">GARCIA</span>
+            </li>
+            <li>
+                <span class="fname">Camèlia Lilia</span>
+                <span class="lname">LAHMAIDI</span>
+            </li>
+            <li>
+                <span class="fname">Emie</span>
+                <span class="lname">LAPU</span>
+            </li>
+            <li>
+                <span class="fname">Nathan</span>
+                <span class="lname">LI</span>
+            </li>
+            <li>
+                <span class="fname">Yurven Nolan</span>
+                <span class="lname">MARIAYE</span>
+            </li>
+            <li>
+                <span class="fname">Naelys</span>
+                <span class="lname">NERIS</span>
+            </li>
+            <li>
+                <span class="fname">Alexis</span>
+                <span class="lname">VICTOIRE</span>
+            </li>
+            <li>
+                <span class="fname">Leanne</span>
+                <span class="lname">CONSTANT</span>
+            </li>
+            <li>
+                <span class="fname">Keylan</span>
+                <span class="lname">BOUTRAIN</span>
+            </li>
+            <li>
+                <span class="fname">Taï-llan</span>
+                <span class="lname">ENETTE</span>
+            </li>
+            <li>
+                <span class="fname">Baptiste Didier Harry</span>
+                <span class="lname">CHAPUT</span>
+            </li>
+            <li>
+                <span class="fname">Elias Nicolas</span>
+                <span class="lname">ZECLER</span>
+            </li>
+            <li>
+                <span class="fname">Enzo</span>
+                <span class="lname">LORDINOT</span>
+            </li>
+            <li>
+                <span class="fname">Manoha Gabriel</span>
+                <span class="lname">NIRDE</span>
+            </li>
+            <li>
+                <span class="fname">Thaïna Cécile</span>
+                <span class="lname">REOL KANOR</span>
+            </li>
+            <li>
+                <span class="fname">Maé</span>
+                <span class="lname">CHARLES-NICOLAS</span>
+            </li>
+            <li>
+                <span class="fname">Louis Franck Jules</span>
+                <span class="lname">NIEGER</span>
+            </li>
+            <li>
+                <span class="fname">Kevan</span>
+                <span class="lname">DELVI</span>
+            </li>
+            <li>
+                <span class="fname">Noam</span>
+                <span class="lname">MIRZA</span>
+            </li>
+            <li>
+                <span class="fname">Owen</span>
+                <span class="lname"></span>
+            </li>
+            <li>
+                <span class="fname">Louise</span>
+                <span class="lname">COURVOISIER</span>
+            </li>
+            <li>
+                <span class="fname">Meddy</span>
+                <span class="lname">DESERT</span>
+            </li>
+            <li>
+                <span class="fname">Nolan</span>
+                <span class="lname">GUILLAUME</span>
+            </li>
+            <li>
+                <span class="fname">Jule</span>
+                <span class="lname">VILLOQUE</span>
+            </li>
+            <li>
+                <span class="fname">Louison</span>
+                <span class="lname">PALMERI</span>
+            </li>
+            <li>
+                <span class="fname">Teddy Yann</span>
+                <span class="lname">POLONET</span>
+            </li>
+            <li>
+                <span class="fname">Deajy</span>
+                <span class="lname">CHARRONDAS</span>
+            </li>
+            <li>
+                <span class="fname">Julian</span>
+                <span class="lname"></span>
+            </li>
+            <li>
+                <span class="fname">Andrés Antonio</span>
+                <span class="lname">ERIMEE</span>
+            </li>
+            <li>
+                <span class="fname">Jeroh</span>
+                <span class="lname">BETHEL</span>
+            </li>
+            <li>
+                <span class="fname">Fahlasi</span>
+                <span class="lname">RAVIER</span>
+            </li>
+            <li>
+                <span class="fname">Wallace Samuel</span>
+                <span class="lname">ANIN</span>
+            </li>
+            <li>
+                <span class="fname">Alexy Nathanaël</span>
+                <span class="lname">BOLLIN-LUCIDE</span>
+            </li>
+            <li>
+                <span class="fname">Luis Eric</span>
+                <span class="lname">CADENET</span>
+            </li>
+            <li>
+                <span class="fname">Erika</span>
+                <span class="lname">DESIRE</span>
+            </li>
+            <li>
+                <span class="fname">Soan Quenn</span>
+                <span class="lname">DUHAMEL</span>
+            </li>
+            <li>
+                <span class="fname">Alexis</span>
+                <span class="lname">FLORENT</span>
+            </li>
+            <li>
+                <span class="fname">Iléa Marie</span>
+                <span class="lname">GAILLARD JAREL</span>
+            </li>
+            <li>
+                <span class="fname">Anthea Lou</span>
+                <span class="lname">GERIER- MONTABORT</span>
+            </li>
+            <li>
+                <span class="fname">Axelle</span>
+                <span class="lname">LI</span>
+            </li>
+            <li>
+                <span class="fname">Clara Camille</span>
+                <span class="lname">LOUIS-JOSEPH-DOGUE</span>
+            </li>
+            <li>
+                <span class="fname">Emma Camille</span>
+                <span class="lname">METHELIE</span>
+            </li>
+            <li>
+                <span class="fname">Eythan Michel-Emmanuel</span>
+                <span class="lname">MUCRET</span>
+            </li>
+            <li>
+                <span class="fname">Pierre Moïse</span>
+                <span class="lname">PERSANIE</span>
+            </li>
+            <li>
+                <span class="fname">William</span>
+                <span class="lname">QUIMBER</span>
+            </li>
+            <li>
+                <span class="fname">Ambre Paquita Eléonore</span>
+                <span class="lname">RENE-CORAIL</span>
+            </li>
+            <li>
+                <span class="fname">Maëra Andréa</span>
+                <span class="lname">SETHAM</span>
+            </li>
+            <li>
+                <span class="fname">Simon</span>
+                <span class="lname">CLIGNAC</span>
+            </li>
+            <li>
+                <span class="fname">Naël Nabil</span>
+                <span class="lname">TAHIRI</span>
+            </li>
+            <li>
+                <span class="fname">Marie Astrid</span>
+                <span class="lname">TRIJOLET</span>
+            </li>
+            <li>
+                <span class="fname">Sofiane Gabriel</span>
+                <span class="lname">PASTOUR</span>
+            </li>
+            <li>
+                <span class="fname">Ethan</span>
+                <span class="lname">QUIATOL</span>
+            </li>
+            <li>
+                <span class="fname">Nathan William</span>
+                <span class="lname">LOUIS-JOSEPH-DOGUE</span>
+            </li>
+            <li>
+                <span class="fname">Clara Camille</span>
+                <span class="lname">LOUIS-JOSEPH-DOGUE</span>
+            </li>
+            <li>
+                <span class="fname">Ethann Mathis</span>
+                <span class="lname">PIPE</span>
+            </li>
+            <li>
+                <span class="fname">Louisa</span>
+                <span class="lname">BERNE</span>
+            </li>
+            <li>
+                <span class="fname">Sloan Lee Roy</span>
+                <span class="lname">PETRIS</span>
+            </li>
+            <li>
+                <span class="fname">Enora, Eva</span>
+                <span class="lname">MOUTAMALLE</span>
+            </li>
+            <li>
+                <span class="fname">Tessa</span>
+                <span class="lname">ROUVEIX</span>
+            </li>
+            <li>
+                <span class="fname">Loan</span>
+                <span class="lname">DESCOURS</span>
+            </li>
+            <li>
+                <span class="fname">Lysiane Sonia</span>
+                <span class="lname">NTYAM LAURENDON</span>
+            </li>
+            <li>
+                <span class="fname">Loan</span>
+                <span class="lname">DESCOURS</span>
+            </li>
+            <li>
+                <span class="fname">Saya</span>
+                <span class="lname">MARIE-CLAIRE</span>
+            </li>
+            <li>
+                <span class="fname">Edwin</span>
+                <span class="lname">LAPU</span>
+            </li>
+            <li>
+                <span class="fname">Malick</span>
+                <span class="lname">MONTANUS</span>
+            </li>
+            <li>
+                <span class="fname">Zoe</span>
+                <span class="lname">LI</span>
+            </li>
+            <li>
+                <span class="fname">Florian</span>
+                <span class="lname">PRECOPPE</span>
+            </li>
+            <li>
+                <span class="fname">Swann Gabriel</span>
+                <span class="lname">LORTO DARGAZANLI</span>
+            </li>
+            <li>
+                <span class="fname">Lola</span>
+                <span class="lname">DORIDAM</span>
+            </li>
+            <li>
+                <span class="fname">Enzo Ciany</span>
+                <span class="lname">SEMMACHE</span>
+            </li>
+            <li>
+                <span class="fname">Lian</span>
+                <span class="lname">DUVAL</span>
+            </li>
+            <li>
+                <span class="fname">Elyakim Olivier</span>
+                <span class="lname">MARC</span>
+            </li>
+            <li>
+                <span class="fname">Carmen Kati-Ana</span>
+                <span class="lname">ERIMEE</span>
+            </li>
+            <li>
+                <span class="fname">Tao</span>
+                <span class="lname">DEGUELLE</span>
+            </li>
+            <li>
+                <span class="fname">Louis-Gabriel</span>
+                <span class="lname">MONTABORT</span>
+            </li>
+            <li>
+                <span class="fname">Déborah Illana</span>
+                <span class="lname">LOTAUT</span>
+            </li>
+            <li>
+                <span class="fname">Yelikha Karine</span>
+                <span class="lname">FOFANA</span>
+            </li>
+            <li>
+                <span class="fname">Nina Marie Lydie</span>
+                <span class="lname">SUFRIN</span>
+            </li>
+            <li>
+                <span class="fname">Emma</span>
+                <span class="lname">JEAN-BAPTISTE</span>
+            </li>
+            <li>
+                <span class="fname">Ethan, Thomas</span>
+                <span class="lname">JEANNOT</span>
+            </li>
+            <li>
+                <span class="fname">Mathis</span>
+                <span class="lname">MONTANUS</span>
+            </li>
+            <li>
+                <span class="fname">Loan</span>
+                <span class="lname">LEDUFF</span>
+            </li>
+            <li>
+                <span class="fname">Marie-Elodie Léa</span>
+                <span class="lname">MARTINEL</span>
+            </li>
+            <li>
+                <span class="fname">Lilou Jade</span>
+                <span class="lname">CASCA</span>
+            </li>
+            <li>
+                <span class="fname">Noellya</span>
+                <span class="lname">GUITTEAUD</span>
+            </li>
+            <li>
+                <span class="fname">Thomas Nicolas</span>
+                <span class="lname">GAILLARD</span>
+            </li>
+            <li>
+                <span class="fname">Eliel</span>
+                <span class="lname">THELCIDE</span>
+            </li>
+            <li>
+                <span class="fname">Thimote</span>
+                <span class="lname">GAREL</span>
+            </li>
+            <li>
+                <span class="fname">Djenahel</span>
+                <span class="lname">MEROY</span>
+            </li>
+            <li>
+                <span class="fname">Mathys Cyriaque Emmanuel</span>
+                <span class="lname">VONIN</span>
+            </li>
+            <li>
+                <span class="fname">Cael</span>
+                <span class="lname">MARIE-CLAIRE</span>
+            </li>
+            <li>
+                <span class="fname">Diovany</span>
+                <span class="lname">DESROSES</span>
+            </li>
+            <li>
+                <span class="fname">Soan Jean René</span>
+                <span class="lname">GRIVALLIERS</span>
+            </li>
+            <li>
+                <span class="fname">Julian</span>
+                <span class="lname">NIEGER</span>
+            </li>
+            <li>
+                <span class="fname">Kévan</span>
+                <span class="lname">CLAVEAU</span>
+            </li>
+            <li>
+                <span class="fname">Melanie</span>
+                <span class="lname">THOBOR PROCOLAME</span>
+            </li>
+            <li>
+                <span class="fname">Karl Emmanuel</span>
+                <span class="lname">DE LEPINE</span>
+            </li>
+            <li>
+                <span class="fname">Sacha</span>
+                <span class="lname">THILIER</span>
+            </li>
+            <li>
+                <span class="fname">Céane Thaïs</span>
+                <span class="lname">CHARLES-NICOLAS</span>
+            </li>
+            <li>
+                <span class="fname">Loanne Mélanie Jeanne</span>
+                <span class="lname">TEMPLET</span>
+            </li>
+            <li>
+                <span class="fname">Ryôko</span>
+                <span class="lname">CHARPENTIER</span>
+            </li>
+            <li>
+                <span class="fname">Emmanuelle Nora Lucille</span>
+                <span class="lname">RUSTAL-- LIGER</span>
+            </li>
+            <li>
+                <span class="fname">Luyana Meyline</span>
+                <span class="lname">CORDEMY</span>
+            </li>
+            <li>
+                <span class="fname">Jérémy Gabriel</span>
+                <span class="lname">GONNIER</span>
+            </li>
+            <li>
+                <span class="fname">Kassandra</span>
+                <span class="lname">GARCIA</span>
+            </li>
+            <li>
+                <span class="fname">Benjamin</span>
+                <span class="lname">LARCHER</span>
+            </li>
+            <li>
+                <span class="fname">Mael</span>
+                <span class="lname">LEDUFF</span>
+            </li>
+            <li>
+                <span class="fname">Hugo</span>
+                <span class="lname">BONIFACE</span>
+            </li>
+            <li>
+                <span class="fname">Thomas Richard Florentin</span>
+                <span class="lname">BACLET</span>
+            </li>
+            <li>
+                <span class="fname">Kelyanne</span>
+                <span class="lname">GEMIEUX</span>
+            </li>
+            <li>
+                <span class="fname">Yanis Elie</span>
+                <span class="lname">BELLAY</span>
+            </li>
+            <li>
+                <span class="fname">Lalitha Nina</span>
+                <span class="lname">MARIAYE--MAGLOIRE</span>
+            </li>
+            <li>
+                <span class="fname">Kelly</span>
+                <span class="lname">JULIENNE</span>
+            </li>
+            <li>
+                <span class="fname">Zoé Laura</span>
+                <span class="lname">COULMIN</span>
+            </li>
+            <li>
+                <span class="fname">Naely</span>
+                <span class="lname">RAGOT</span>
+            </li>
+            <li>
+                <span class="fname">Theodore</span>
+                <span class="lname">BRUNET</span>
+            </li>
+            <li>
+                <span class="fname">Meddy</span>
+                <span class="lname">NADEAU</span>
+            </li>
+            <li>
+                <span class="fname">Maxime</span>
+                <span class="lname">DE L'HOMME</span>
+            </li>
+      </ul>
+    </div>
+
+    <script type='text/javascript'>
+        var errors = [],
+            warnings = [];
+
+        function add_warning(fname, lname, _fname, _lname, likeness) {
+            var found = false;
+
+            for (var i = 0; i < warnings.length; ++i) {
+                const warning = warnings[i];
+                if (warning['fname'] == fname &&
+                    warning['lname'] == lname) {
+
+                    warning['likes'].push({
+                        fname: _fname,
+                        lname: _lname,
+                        likeness: likeness
+                    });
+                    found = true;
+                }
+            }
+            if (!found) {
+                warnings.push({
+                    fname: fname,
+                    lname: lname,
+                    likes: [
+                        {
+                            fname: _fname,
+                            lname: _lname,
+                            likeness: likeness
+                        },
+                    ]
+                });
+            }
+        }
+
+        function get_names(type = 'soft') {
+            const threshold = 0.5;
+
+            const lis = document.querySelectorAll('ul li');
+
+            for (var i = 0; i < lis.length - 1; ++i) {
+                const fname = lis[i].querySelector('.fname').innerHTML;
+                const lname = lis[i].querySelector('.lname').innerHTML;
+                
+                if (fname == '' ||
+                    lname == '') {
+                    errors.push({
+                        fname: fname,
+                        lname: lname,
+                        error: 'fname or lname missing'
+                    });
+                }
+
+                for (var j = i + 1; j < lis.length; ++j) {
+                    const _fname = lis[j].querySelector('.fname').innerHTML;
+                    const _lname = lis[j].querySelector('.lname').innerHTML;
+
+                    if (type == 'soft') {
+                        get_names_soft(fname, lname, _fname, _lname);
+                    }
+                    else if (type == 'hard') {
+                        get_names_hard(fname, lname, _fname, _lname);
+                    }
+                }
+            }
+        }
+
+        function get_names_soft(fname, lname, _fname, _lname) {
+            const fullname = fname + lname,
+                  _fullname = _fname + _lname;
+
+            const s = similarity(fullname, _fullname);
+            
+            if (s >= threshold) {
+                add_warning(fname, lname, _fname, _lname, s);
+            }
+        }
+
+        function get_names_hard(fname, lname, _fname, _lname) {
+            const fs = similarity(fname, _fname);
+            const ls = similarity(lname, _lname);
+
+            if (fs >= threshold &&
+                ls >= threshold) {
+                
+                add_warning(fname, lname, _fname, _lname, Math.min(fs, ls));
+            }
+        }
+
+        function checkSimilarity(){
+            var str1 = document.getElementById("lhsInput").value;
+            var str2 = document.getElementById("rhsInput").value;
+            document.getElementById("output").innerHTML = similarity(str1, str2);
+        }
+        
+        // Core
+        function similarity(s1, s2) {
+             var longer = s1;
+            var shorter = s2;
+            if (s1.length < s2.length) {
+                longer = s2;
+                shorter = s1;
+            }
+            var longerLength = longer.length;
+            if (longerLength == 0) {
+                return 1.0;
+            }
+            return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+        }
+          
+        function editDistance(s1, s2) {
+            s1 = s1.toLowerCase();
+            s2 = s2.toLowerCase();
+          
+            var costs = new Array();
+            for (var i = 0; i <= s1.length; i++) {
+                var lastValue = i;
+                for (var j = 0; j <= s2.length; j++) {
+                    if (i == 0)
+                        costs[j] = j;
+                    else {
+                        if (j > 0) {
+                            var newValue = costs[j - 1];                    
+                            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                                newValue = Math.min(Math.min(newValue, lastValue),
+                                    costs[j]) + 1;
+                            costs[j - 1] = lastValue;
+                            lastValue = newValue;
+                        }
+                    }
+                }
+                if (i > 0)
+                    costs[s2.length] = lastValue;
+            }
+            return costs[s2.length];
+        }
+
+
+    </script>
+</body>
+</html>
